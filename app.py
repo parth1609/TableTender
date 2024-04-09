@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import streamlit as st
 import google.generativeai as genai
 
@@ -82,3 +83,6 @@ if usr_msg:
     st.markdown(usr_msg)
 
   llm_function(usr_msg)
+=======
+
+>>>>>>> e2d23d085a2684c00accd240b09642be6cb7bcbf

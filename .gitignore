@@ -109,7 +109,10 @@ ipython_config.py
 #   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e2d23d085a2684c00accd240b09642be6cb7bcbf
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
@@ -139,9 +142,12 @@ venv.bak/
 # mkdocs documentation
 /site
 
+<<<<<<< HEAD
 # stramlit api file
 .streamlit/
 
+=======
+>>>>>>> e2d23d085a2684c00accd240b09642be6cb7bcbf
 # mypy
 .mypy_cache/
 .dmypy.json
