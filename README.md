@@ -17,7 +17,9 @@ While it doesn't process real orders, it simulates the experience of interacting
 
 ## Tech Stack
 
-**[Streamlit](https://streamlit.io/):** Python library 
+**[Streamlit](https://streamlit.io/) : ** Python library 
+
+**[Gemini api](https://ai.google.dev/tutorials/python_quickstart) : ** Gemini api Google developer documentation  
 
 
 ## Demo
