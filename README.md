@@ -21,6 +21,8 @@ While it doesn't process real orders, it simulates the experience of interacting
 
 **[Gemini api](https://ai.google.dev/tutorials/python_quickstart) : ** Gemini api Google developer documentation  
 
+**[supabase](https://supabase.com/) : ** for Authinticaion save user information  
+
 
 ## Demo
 

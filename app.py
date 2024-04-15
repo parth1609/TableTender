@@ -1,6 +1,8 @@
 
 import streamlit as st
 import google.generativeai as genai
+from st_login_form import login_form
+from supabase import create_client, Client
 
 st.title("TableTender")
 
@@ -8,6 +10,31 @@ genai.configure(api_key=st.secrets["SECRET_KEY"])
 
 # Select the model
 model = genai.GenerativeModel('gemini-pro')
+
+# **Security:** Read Supabase credentials from environment variables
+url = st.secrets['SUPABASE_URL']
+key = st.secrets['SUPABASE_KEY']
+
+# Create a Supabase client
+supabase: Client = create_client(url, key)
+
+with st.sidebar:
+  client = login_form()
+  if st.session_state["authenticated"]:
+    # Display username or welcome message
+    if st.session_state["username"]:
+      st.success(f"Welcome {st.session_state['username']}")
+    else:
+      st.success("Welcome guest")
+
+    if st.button("Logout"):
+      st.session_state["authenticated"] = False
+      st.session_state["username"] = None  # Clear username as well (optional)
+      st.experimental_rerun()  # Rerun the app to clear UI elements
+
+  else:
+    st.error("Not authenticated. Please login to chat with TableTender.")
+
 
 # Initialize chat history
 if "context" not in st.session_state:
@@ -44,10 +71,11 @@ Don't hesitate to ask if you have any questions about your order !
     """
   }]
 
-# Display chat context from history on app rerun
-for message in st.session_state.context:
-  with st.chat_message(message["role"]):
-    st.markdown(message["content"])
+# Display chat context from history on app rerun after login
+if st.session_state["authenticated"]:
+  for message in st.session_state.context:
+    with st.chat_message(message["role"]):
+      st.markdown(message["content"])
 
 
 # Process and store Query and Response
