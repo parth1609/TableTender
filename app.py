@@ -97,8 +97,6 @@ if st.session_state["authenticated"]:
     st.session_state["authenticated"] = False
     st.session_state["username"] = None  # Clear username as well (optional)
     st.experimental_rerun()  # Rerun the app to clear UI elements
-  # Accept user input
-  usr_msg = st.chat_input("What's up?")
 
   # Calling the Function when Input is Provided
   if usr_msg:
