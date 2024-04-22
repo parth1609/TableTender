@@ -83,9 +83,6 @@ def llm_function(usr_msg):
   st.session_state.context.append({"role": "system", "content": response.text})
 
 
-# Accept user input
-usr_msg = st.chat_input("What's up?")
-
 
 if st.session_state["authenticated"]:
   if st.session_state["username"]:
@@ -98,6 +95,8 @@ if st.session_state["authenticated"]:
     st.session_state["username"] = None  # Clear username as well (optional)
     st.experimental_rerun()  # Rerun the app to clear UI elements
 
+  # Accept user input
+  usr_msg = st.chat_input("What's up?")
   # Calling the Function when Input is Provided
   if usr_msg:
     # Displaying the User Message
