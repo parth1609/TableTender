@@ -58,9 +58,23 @@ Don't hesitate to ask if you have any questions about your order !
   }]
 
 # Display chat context from history on app rerun after login
-for message in st.session_state.context:
-  with st.chat_message(message["role"]):
-    st.markdown(message["content"])
+if st.session_state["authenticated"]:
+  if st.session_state["username"]:
+    st.success(f"Welcome {st.session_state['username']}")
+  else:
+    st.success("Welcome guest")
+
+  if st.button("Logout"):
+    st.session_state["authenticated"] = False
+    st.session_state["username"] = None  # Clear username as well (optional)
+    st.experimental_rerun()  # Rerun the app to clear UI elements
+
+  for message in st.session_state.context:
+    with st.chat_message(message["role"]):
+      st.markdown(message["content"])
+
+else:
+  st.error("Not authenticated. Please login to chat with TableTender.")
 
 
 # Process and store Query and Response
@@ -85,18 +99,10 @@ def llm_function(usr_msg):
 
 
 if st.session_state["authenticated"]:
-  if st.session_state["username"]:
-    st.success(f"Welcome {st.session_state['username']}")
-  else:
-    st.success("Welcome guest")
-
-  if st.button("Logout"):
-    st.session_state["authenticated"] = False
-    st.session_state["username"] = None  # Clear username as well (optional)
-    st.experimental_rerun()  # Rerun the app to clear UI elements
 
   # Accept user input
   usr_msg = st.chat_input("What's up?")
+
   # Calling the Function when Input is Provided
   if usr_msg:
     # Displaying the User Message
@@ -104,6 +110,4 @@ if st.session_state["authenticated"]:
       st.markdown(usr_msg)
 
     llm_function(usr_msg)
-else:
-  st.error("Not authenticated. Please login to chat with TableTender.")
 
