@@ -6,6 +6,14 @@ The Chatbot Order Booking System is a conversational AI designed to assist users
 
 While it doesn't process real orders, it simulates the experience of interacting with a virtual assistant for order placement.
 
+## Demo
+
+<img src="/img/first.jpg" alt="first">
+<br>
+<img src="/img/second.jpg" alt="second">
+<br>
+<img src="/img/third.jpg" alt="third">
+<br>
 
 ## Features
 
